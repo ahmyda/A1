@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English for Kids - A1 Level with Arabic</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Sans MS', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: #e8f4fd;
+            color: #333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+            direction: ltr;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #ff8e53);
+            color: white;
+            text-align: center;
+            padding: 25px 20px;
+            border-bottom: 8px solid #4ecdc4;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 15px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .intro {
+            background-color: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin: 25px 0;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border: 3px solid #4ecdc4;
+        }
+        
+        .intro p {
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+        
+        .language-selector {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        
+        .lang-btn {
+            padding: 8px 20px;
+            border-radius: 50px;
+            border: 2px solid #4ecdc4;
+            background: white;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: bold;
+        }
+        
+        .lang-btn.active {
+            background: #4ecdc4;
+            color: white;
+        }
+        
+        .section-title {
+            color: #ff6b6b;
+            border-bottom: 4px solid #4ecdc4;
+            padding-bottom: 10px;
+            margin: 30px 0 20px;
+            font-size: 1.8rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .section-title i {
+            margin-right: 10px;
+        }
+        
+        .word-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .word-card {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+            border-top: 6px solid #ff6b6b;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .word-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .word-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .word {
+            font-size: 1.8rem;
+            color: #ff6b6b;
+            font-weight: bold;
+        }
+        
+        .translation {
+            font-size: 1.3rem;
+            color: #2d3436;
+            font-weight: bold;
+            background: #ffeaa7;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        
+        .sentence {
+            font-size: 1.1rem;
+            background-color: #f9f9f9;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-left: 4px solid #4ecdc4;
+        }
+        
+        .arabic-sentence {
+            font-size: 1.1rem;
+            background-color: #f1f8ff;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-right: 4px solid #ff6b6b;
+            direction: rtl;
+            text-align: right;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .exercises-section {
+            background-color: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-top: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border: 3px solid #ffd166;
+        }
+        
+        .exercise-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 25px;
+            flex-wrap: wrap;
+        }
+        
+        .tab {
+            padding: 12px 25px;
+            background: #f1f1f1;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: #ffd166;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .exercise-content {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 25px;
+            min-height: 400px;
+        }
+        
+        .exercise {
+            display: none;
+        }
+        
+        .exercise.active {
+            display: block;
+        }
+        
+        .exercise-title {
+            color: #2d3436;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .matching-exercise, .fill-exercise, .listen-exercise {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .match-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .match-item {
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            cursor: move;
+            min-width: 150px;
+            text-align: center;
+            font-size: 1.2rem;
+        }
+        
+        .match-zone {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            margin-top: 30px;
+        }
+        
+        .match-column {
+            flex: 1;
+            padding: 20px;
+            background: #e8f4fd;
+            border-radius: 10px;
+            margin: 0 10px;
+            min-height: 300px;
+        }
+        
+        .drop-zone {
+            min-height: 250px;
+            border: 3px dashed #4ecdc4;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 15px;
+        }
+        
+        .fill-blank {
+            font-size: 1.5rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            width: 100%;
+            text-align: center;
+        }
+        
+        .blank {
+            display: inline-block;
+            width: 120px;
+            border-bottom: 2px solid #333;
+            margin: 0 10px;
+            text-align: center;
+        }
+        
+        .word-options {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 30px;
+        }
+        
+        .option-btn {
+            padding: 12px 20px;
+            background: #4ecdc4;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+        
+        .option-btn:hover {
+            background: #3db8af;
+            transform: scale(1.05);
+        }
+        
+        .listen-exercise audio {
+            width: 100%;
+            margin: 20px 0;
+        }
+        
+        .listen-questions {
+            margin-top: 30px;
+            width: 100%;
+        }
+        
+        .listen-question {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 10px;
+        }
+        
+        .feedback {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .exercise-controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+        
+        .control-btn {
+            padding: 12px 25px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .control-btn:hover {
+            background: #ff5252;
+            transform: scale(1.05);
+        }
+        
+        .speak-btn {
+            background: #4ecdc4;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: #666;
+            font-size: 1rem;
+        }
+        
+        @media (max-width: 768px) {
+            .word-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .match-zone {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1><i class="fas fa-globe"></i> English for Kids - A1 Level</h1>
+        <p class="subtitle">Learn 30 most common English words with Arabic translations and fun exercises!</p>
+        <div class="language-selector">
+            <button class="lang-btn active" id="english-btn">English</button>
+            <button class="lang-btn" id="arabic-btn">العربية</button>
+        </div>
+    </header>
+    
+    <div class="container">
+        <section class="intro">
+            <p id="intro-text">Welcome! Let's learn 30 common English words for beginners. Each word has an Arabic translation and a simple sentence. Try the exercises to practice what you learn!</p>
+            <p id="instructions">Click on the exercise tabs below to practice in different ways!</p>
+        </section>
+        
+        <section class="words-section">
+            <h2 class="section-title"><i class="fas fa-book"></i> <span id="words-title">30 Common Words for Beginners</span></h2>
+            <div class="word-grid" id="word-grid">
+                <!-- Word cards will be generated by JavaScript -->
+            </div>
+        </section>
+        
+        <section class="exercises-section">
+            <h2 class="section-title"><i class="fas fa-pencil-alt"></i> <span id="exercises-title">Practice Exercises</span></h2>
+            
+            <div class="exercise-tabs">
+                <button class="tab active" data-exercise="matching">Word Matching</button>
+                <button class="tab" data-exercise="fill">Fill in the Blanks</button>
+                <button class="tab" data-exercise="listen">Listen & Choose</button>
+            </div>
+            
+            <div class="exercise-content">
+                <!-- Matching Exercise -->
+                <div class="exercise active" id="matching-exercise">
+                    <h3 class="exercise-title">Match English words with Arabic meanings</h3>
+                    <div class="matching-exercise">
+                        <p>Drag the English words to match with their Arabic translations</p>
+                        
+                        <div class="match-zone">
+                            <div class="match-column">
+                                <h4>English Words</h4>
+                                <div class="drop-zone" id="english-drop-zone">
+                                    <!-- English words will be added here by JavaScript -->
+                                </div>
+                            </div>
+                            
+                            <div class="match-column">
+                                <h4>Arabic Translations</h4>
+                                <div class="drop-zone" id="arabic-drop-zone">
+                                    <!-- Arabic words will be added here by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-controls">
+                            <button class="control-btn" id="check-match">Check Answers</button>
+                            <button class="control-btn" id="reset-match">Reset</button>
+                        </div>
+                        
+                        <div class="feedback" id="match-feedback"></div>
+                    </div>
+                </div>
+                
+                <!-- Fill in the blanks Exercise -->
+                <div class="exercise" id="fill-exercise">
+                    <h3 class="exercise-title">Fill in the blanks with the correct word</h3>
+                    <div class="fill-exercise">
+                        <p>Choose the correct word to complete each sentence</p>
+                        
+                        <div class="fill-blank" id="sentence-1">
+                            I have a red <span class="blank" id="blank-1"></span>. (apple/car/book)
+                        </div>
+                        
+                        <div class="fill-blank" id="sentence-2">
+                            My <span class="blank" id="blank-2"></span> is playing in the garden. (mother/cat/water)
+                        </div>
+                        
+                        <div class="fill-blank" id="sentence-3">
+                            The <span class="blank" id="blank-3"></span> is shining today. (house/sun/friend)
+                        </div>
+                        
+                        <div class="word-options" id="fill-options">
+                            <!-- Options will be generated by JavaScript -->
+                        </div>
+                        
+                        <div class="exercise-controls">
+                            <button class="control-btn" id="check-fill">Check Answers</button>
+                            <button class="control-btn" id="new-fill">New Sentences</button>
+                        </div>
+                        
+                        <div class="feedback" id="fill-feedback"></div>
+                    </div>
+                </div>
+                
+                <!-- Listen and choose Exercise -->
+                <div class="exercise" id="listen-exercise">
+                    <h3 class="exercise-title">Listen and choose the correct word</h3>
+                    <div class="listen-exercise">
+                        <p>Click the play button to hear a word, then choose the correct picture</p>
+                        
+                        <audio controls id="word-audio">
+                            <source src="" type="audio/mpeg">
+                            Your browser does not support the audio element.
+                        </audio>
+                        
+                        <div class="listen-questions">
+                            <div class="listen-question">
+                                <h4>What word did you hear?</h4>
+                                <div class="word-options" id="listen-options">
+                                    <!-- Options will be generated by JavaScript -->
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise-controls">
+                            <button class="control-btn speak-btn" id="speak-word">Say the Word</button>
+                            <button class="control-btn" id="next-word">Next Word</button>
+                        </div>
+                        
+                        <div class="feedback" id="listen-feedback"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>English for Kids - A1 Level | 30 common words with Arabic translations</p>
+            <p>Practice makes perfect! Keep learning every day.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Words data with English, Arabic, sentence, and emoji
+        const wordsData = [
+            { english: "hello", arabic: "مرحبا", sentence: "Hello, my name is Ali.", arabicSentence: "مرحبا، اسمي علي.", emoji: "👋", category: "greeting" },
+            { english: "goodbye", arabic: "مع السلامة", sentence: "Goodbye, see you tomorrow.", arabicSentence: "مع السلامة، أراك غداً.", emoji: "👋", category: "greeting" },
+            { english: "please", arabic: "من فضلك", sentence: "Can I have water, please?", arabicSentence: "هل يمكنني الحصول على الماء، من فضلك؟", emoji: "🙏", category: "phrase" },
+            { english: "thank you", arabic: "شكرا", sentence: "Thank you for your help.", arabicSentence: "شكرا لمساعدتك.", emoji: "😊", category: "phrase" },
+            { english: "yes", arabic: "نعم", sentence: "Yes, I like apples.", arabicSentence: "نعم، أنا أحب التفاح.", emoji: "👍", category: "response" },
+            { english: "no", arabic: "لا", sentence: "No, I don't want juice.", arabicSentence: "لا، أنا لا أريد العصير.", emoji: "👎", category: "response" },
+            { english: "mother", arabic: "أم", sentence: "My mother cooks food.", arabicSentence: "أمي تطبخ الطعام.", emoji: "👩", category: "family" },
+            { english: "father", arabic: "أب", sentence: "My father reads books.", arabicSentence: "أبي يقرأ الكتب.", emoji: "👨", category: "family" },
+            { english: "cat", arabic: "قطة", sentence: "The cat is small and white.", arabicSentence: "القطة صغيرة وبيضاء.", emoji: "🐱", category: "animals" },
+            { english: "dog", arabic: "كلب", sentence: "I have a brown dog.", arabicSentence: "لدي كلب بني.", emoji: "🐶", category: "animals" },
+            { english: "house", arabic: "منزل", sentence: "We live in a big house.", arabicSentence: "نحن نعيش في منزل كبير.", emoji: "🏠", category: "places" },
+            { english: "school", arabic: "مدرسة", sentence: "I go to school every day.", arabicSentence: "أذهب إلى المدرسة كل يوم.", emoji: "🏫", category: "places" },
+            { english: "friend", arabic: "صديق", sentence: "My friend is kind.", arabicSentence: "صديقي لطيف.", emoji: "👫", category: "people" },
+            { english: "teacher", arabic: "معلم", sentence: "The teacher helps us learn.", arabicSentence: "المعلم يساعدنا على التعلم.", emoji: "👩‍🏫", category: "people" },
+            { english: "book", arabic: "كتاب", sentence: "I read a book every night.", arabicSentence: "أقرأ كتاباً كل ليلة.", emoji: "📚", category: "objects" },
+            { english: "pen", arabic: "قلم", sentence: "I write with a blue pen.", arabicSentence: "أكتب بقلم أزرق.", emoji: "✏️", category: "objects" },
+            { english: "water", arabic: "ماء", sentence: "I drink water when I'm thirsty.", arabicSentence: "أشرب الماء عندما أكون عطشاناً.", emoji: "💧", category: "food" },
+            { english: "apple", arabic: "تفاحة", sentence: "The apple is red and sweet.", arabicSentence: "التفاحة حمراء وحلوة.", emoji: "🍎", category: "food" },
+            { english: "happy", arabic: "سعيد", sentence: "I feel happy when I play.", arabicSentence: "أشعر بالسعادة عندما ألعب.", emoji: "😄", category: "feelings" },
+            { english: "sad", arabic: "حزين", sentence: "Sometimes I feel sad.", arabicSentence: "أحياناً أشعر بالحزن.", emoji: "😢", category: "feelings" },
+            { english: "big", arabic: "كبير", sentence: "Elephants are big animals.", arabicSentence: "الفيلة حيوانات كبيرة.", emoji: "🐘", category: "adjectives" },
+            { english: "small", arabic: "صغير", sentence: "Ants are very small.", arabicSentence: "النمل صغير جداً.", emoji: "🐜", category: "adjectives" },
+            { english: "red", arabic: "أحمر", sentence: "Apples are often red.", arabicSentence: "التفاح غالباً أحمر.", emoji: "🔴", category: "colors" },
+            { english: "blue", arabic: "أزرق", sentence: "The sky is blue on sunny days.", arabicSentence: "السماء زرقاء في الأيام المشمسة.", emoji: "🔵", category: "colors" },
+            { english: "one", arabic: "واحد", sentence: "I have one brother.", arabicSentence: "لدي أخ واحد.", emoji: "1️⃣", category: "numbers" },
+            { english: "two", arabic: "اثنان", sentence: "I see two birds in the tree.", arabicSentence: "أرى عصفورين في الشجرة.", emoji: "2️⃣", category: "numbers" },
+            { english: "sun", arabic: "شمس", sentence: "The sun is bright and warm.", arabicSentence: "الشمس مشرقة ودافئة.", emoji: "☀️", category: "nature" },
+            { english: "rain", arabic: "مطر", sentence: "We need an umbrella when it rains.", arabicSentence: "نحتاج إلى مظلة عندما تمطر.", emoji: "🌧️", category: "nature" },
+            { english: "run", arabic: "يركض", sentence: "I can run very fast.", arabicSentence: "أستطيع الركض بسرعة كبيرة.", emoji: "🏃", category: "actions" },
+            { english: "jump", arabic: "يقفز", sentence: "Rabbits can jump very high.", arabicSentence: "الأرانب تستطيع القفز عالياً جداً.", emoji: "🦘", category: "actions" }
+        ];
+
+        // DOM elements
+        const wordGrid = document.getElementById('word-grid');
+        const englishBtn = document.getElementById('english-btn');
+        const arabicBtn = document.getElementById('arabic-btn');
+        const introText = document.getElementById('intro-text');
+        const instructions = document.getElementById('instructions');
+        const wordsTitle = document.getElementById('words-title');
+        const exercisesTitle = document.getElementById('exercises-title');
+        const tabs = document.querySelectorAll('.tab');
+        const exercises = document.querySelectorAll('.exercise');
+        const englishDropZone = document.getElementById('english-drop-zone');
+        const arabicDropZone = document.getElementById('arabic-drop-zone');
+        const checkMatchBtn = document.getElementById('check-match');
+        const resetMatchBtn = document.getElementById('reset-match');
+        const matchFeedback = document.getElementById('match-feedback');
+        const fillOptions = document.getElementById('fill-options');
+        const checkFillBtn = document.getElementById('check-fill');
+        const newFillBtn = document.getElementById('new-fill');
+        const fillFeedback = document.getElementById('fill-feedback');
+        const wordAudio = document.getElementById('word-audio');
+        const listenOptions = document.getElementById('listen-options');
+        const speakWordBtn = document.getElementById('speak-word');
+        const nextWordBtn = document.getElementById('next-word');
+        const listenFeedback = document.getElementById('listen-feedback');
+
+        // Game state variables
+        let currentLanguage = 'english';
+        let currentExercise = 'matching';
+        let draggedItem = null;
+        let matchedPairs = [];
+        let currentListenWordIndex = 0;
+        let fillBlanksAnswers = {};
+
+        // Initialize the page
+        function initPage() {
+            // Generate word cards
+            generateWordCards();
+            
+            // Set up language toggle
+            englishBtn.addEventListener('click', () => switchLanguage('english'));
+            arabicBtn.addEventListener('click', () => switchLanguage('arabic'));
+            
+            // Set up exercise tabs
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const exercise = tab.dataset.exercise;
+                    switchExercise(exercise);
+                });
+            });
+            
+            // Initialize matching exercise
+            initMatchingExercise();
+            
+            // Initialize fill in the blanks exercise
+            initFillExercise();
+            
+            // Initialize listen exercise
+            initListenExercise();
+            
+            // Set up drag and drop
+            setupDragAndDrop();
+        }
+
+        // Generate word cards
+        function generateWordCards() {
+            wordGrid.innerHTML = '';
+            
+            wordsData.forEach((word, index) => {
+                const wordCard = document.createElement('div');
+                wordCard.className = 'word-card';
+                wordCard.innerHTML = `
+                    <div class="word-header">
+                        <div class="word">${word.emoji} ${word.english}</div>
+                        <div class="translation">${word.arabic}</div>
+                    </div>
+                    <div class="sentence">${word.sentence}</div>
+                    <div class="arabic-sentence">${word.arabicSentence}</div>
+                `;
+                wordGrid.appendChild(wordCard);
+            });
+        }
+
+        // Switch between English and Arabic interface
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            if (lang === 'english') {
+                englishBtn.classList.add('active');
+                arabicBtn.classList.remove('active');
+                introText.textContent = "Welcome! Let's learn 30 common English words for beginners. Each word has an Arabic translation and a simple sentence. Try the exercises to practice what you learn!";
+                instructions.textContent = "Click on the exercise tabs below to practice in different ways!";
+                wordsTitle.textContent = "30 Common Words for Beginners";
+                exercisesTitle.textContent = "Practice Exercises";
+            } else {
+                englishBtn.classList.remove('active');
+                arabicBtn.classList.add('active');
+                introText.textContent = "مرحباً! دعنا نتعلم 30 كلمة إنجليزية شائعة للمبتدئين. كل كلمة لها ترجمة عربية وجملة بسيطة. جرب التمارين لممارسة ما تتعلمه!";
+                instructions.textContent = "انقر على علامات التبويب أدناه للممارسة بطرق مختلفة!";
+                wordsTitle.textContent = "٣٠ كلمة شائعة للمبتدئين";
+                exercisesTitle.textContent = "تمارين الممارسة";
+            }
+        }
+
+        // Switch between exercises
+        function switchExercise(exercise) {
+            currentExercise = exercise;
+            
+            // Update active tab
+            tabs.forEach(tab => {
+                if (tab.dataset.exercise === exercise) {
+                    tab.classList.add('active');
+                } else {
+                    tab.classList.remove('active');
+                }
+            });
+            
+            // Update active exercise content
+            exercises.forEach(ex => {
+                if (ex.id === `${exercise}-exercise`) {
+                    ex.classList.add('active');
+                } else {
+                    ex.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize matching exercise
+        function initMatchingExercise() {
+            // Clear previous items
+            englishDropZone.innerHTML = '';
+            arabicDropZone.innerHTML = '';
+            matchedPairs = [];
+            matchFeedback.textContent = '';
+            matchFeedback.className = 'feedback';
+            
+            // Shuffle the words
+            const shuffledWords = [...wordsData].sort(() => Math.random() - 0.5).slice(0, 6);
+            
+            // Create English word items
+            shuffledWords.forEach(word => {
+                const item = document.createElement('div');
+                item.className = 'match-item';
+                item.textContent = word.english;
+                item.draggable = true;
+                item.dataset.word = word.english;
+                item.dataset.arabic = word.arabic;
+                englishDropZone.appendChild(item);
+            });
+            
+            // Create Arabic translation items (shuffled)
+            const shuffledArabic = shuffledWords.map(w => w.arabic).sort(() => Math.random() - 0.5);
+            shuffledArabic.forEach(arabicWord => {
+                const item = document.createElement('div');
+                item.className = 'match-item';
+                item.textContent = arabicWord;
+                item.draggable = true;
+                item.dataset.arabic = arabicWord;
+                arabicDropZone.appendChild(item);
+            });
+        }
+
+        // Set up drag and drop functionality
+        function setupDragAndDrop() {
+            const items = document.querySelectorAll('.match-item');
+            
+            items.forEach(item => {
+                item.addEventListener('dragstart', function(e) {
+                    draggedItem = this;
+                    setTimeout(() => {
+                        this.style.display = 'none';
+                    }, 0);
+                });
+                
+                item.addEventListener('dragend', function() {
+                    setTimeout(() => {
+                        this.style.display = 'block';
+                        draggedItem = null;
+                    }, 0);
+                });
+            });
+            
+            const dropZones = document.querySelectorAll('.drop-zone');
+            
+            dropZones.forEach(zone => {
+                zone.addEventListener('dragover', function(e) {
+                    e.preventDefault();
+                });
+                
+                zone.addEventListener('dragenter', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '#d4edda';
+                });
+                
+                zone.addEventListener('dragleave', function() {
+                    this.style.backgroundColor = '';
+                });
+                
+                zone.addEventListener('drop', function(e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '';
+                    
+                    if (draggedItem && this !== draggedItem.parentNode) {
+                        this.appendChild(draggedItem);
+                        
+                        // Check if we have a match
+                        checkForMatch();
+                    }
+                });
+            });
+            
+            // Add event listeners for match buttons
+            checkMatchBtn.addEventListener('click', checkAllMatches);
+            resetMatchBtn.addEventListener('click', initMatchingExercise);
+        }
+
+        // Check for a single match
+        function checkForMatch() {
+            // This function would check if an English word and its Arabic translation
+            // are in the same drop zone (which would be incorrect)
+            // We'll implement the full check in checkAllMatches
+        }
+
+        // Check all matches
+        function checkAllMatches() {
+            const englishItems = englishDropZone.querySelectorAll('.match-item');
+            const arabicItems = arabicDropZone.querySelectorAll('.match-item');
+            
+            // Check if all English items are in the English zone and all Arabic in Arabic zone
+            let allCorrect = true;
+            let correctPairs = 0;
+            
+            // For simplicity, we'll just check if items are in their original zones
+            // In a full implementation, you would check specific pairings
+            englishItems.forEach(item => {
+                const word = item.dataset.word;
+                const correctArabic = item.dataset.arabic;
+                
+                // Find if the correct Arabic translation is in the Arabic zone
+                const arabicItem = Array.from(arabicItems).find(ai => ai.textContent === correctArabic);
+                
+                if (arabicItem && arabicItem.parentNode === arabicDropZone) {
+                    correctPairs++;
+                    item.style.backgroundColor = '#d4edda';
+                    arabicItem.style.backgroundColor = '#d4edda';
+                } else {
+                    allCorrect = false;
+                    item.style.backgroundColor = '#f8d7da';
+                }
+            });
+            
+            if (allCorrect && correctPairs === englishItems.length) {
+                matchFeedback.textContent = "Excellent! All matches are correct!";
+                matchFeedback.className = 'feedback correct';
+            } else {
+                matchFeedback.textContent = `You have ${correctPairs} correct out of ${englishItems.length}. Keep trying!`;
+                matchFeedback.className = 'feedback incorrect';
+            }
+        }
+
+        // Initialize fill in the blanks exercise
+        function initFillExercise() {
+            fillOptions.innerHTML = '';
+            fillFeedback.textContent = '';
+            fillFeedback.className = 'feedback';
+            fillBlanksAnswers = {};
+            
+            // Select 3 random words
+            const selectedWords = [...wordsData].sort(() => Math.random() - 0.5).slice(0, 3);
+            
+            // Create sentences with blanks
+            const sentences = [
+                { id: 1, text: `I have a red <span class="blank" id="blank-1"></span>.`, answer: selectedWords[0].english, options: [selectedWords[0].english, selectedWords[1].english, selectedWords[2].english] },
+                { id: 2, text: `My <span class="blank" id="blank-2"></span> is playing in the garden.`, answer: selectedWords[1].english, options: [selectedWords[1].english, selectedWords[0].english, selectedWords[2].english] },
+                { id: 3, text: `The <span class="blank" id="blank-3"></span> is shining today.`, answer: selectedWords[2].english, options: [selectedWords[2].english, selectedWords[0].english, selectedWords[1].english] }
+            ];
+            
+            // Shuffle options for each sentence
+            sentences.forEach(sentence => {
+                sentence.options = sentence.options.sort(() => Math.random() - 0.5);
+            });
+            
+            // Update sentence displays
+            sentences.forEach(sentence => {
+                const sentenceElement = document.getElementById(`sentence-${sentence.id}`);
+                sentenceElement.innerHTML = sentence.text;
+                
+                // Store the answer
+                fillBlanksAnswers[`blank-${sentence.id}`] = sentence.answer;
+            });
+            
+            // Create option buttons from all selected words
+            const allOptions = [...selectedWords[0].options, ...selectedWords[1].options, ...selectedWords[2].options];
+            const uniqueOptions = [...new Set(allOptions)];
+            
+            uniqueOptions.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'option-btn';
+                optionBtn.textContent = option;
+                optionBtn.addEventListener('click', () => selectFillOption(option));
+                fillOptions.appendChild(optionBtn);
+            });
+            
+            // Set up blank click handlers
+            document.querySelectorAll('.blank').forEach(blank => {
+                blank.addEventListener('click', function() {
+                    this.dataset.selected = this.dataset.selected === 'true' ? 'false' : 'true';
+                    this.style.backgroundColor = this.dataset.selected === 'true' ? '#ffeaa7' : '';
+                });
+            });
+        }
+
+        // Select fill option
+        function selectFillOption(word) {
+            const selectedBlank = document.querySelector('.blank[data-selected="true"]');
+            if (selectedBlank) {
+                selectedBlank.textContent = word;
+                selectedBlank.dataset.answer = word;
+                selectedBlank.dataset.selected = 'false';
+                selectedBlank.style.backgroundColor = '';
+            }
+        }
+
+        // Check fill answers
+        function checkFillAnswers() {
+            let correctCount = 0;
+            let totalBlanks = Object.keys(fillBlanksAnswers).length;
+            
+            Object.keys(fillBlanksAnswers).forEach(blankId => {
+                const blankElement = document.getElementById(blankId);
+                const userAnswer = blankElement.dataset.answer || '';
+                const correctAnswer = fillBlanksAnswers[blankId];
+                
+                if (userAnswer === correctAnswer) {
+                    blankElement.style.color = '#155724';
+                    blankElement.style.borderBottomColor = '#155724';
+                    correctCount++;
+                } else {
+                    blankElement.style.color = '#721c24';
+                    blankElement.style.borderBottomColor = '#721c24';
+                    if (userAnswer) {
+                        blankElement.textContent = `${userAnswer} ✗`;
+                    }
+                }
+            });
+            
+            if (correctCount === totalBlanks) {
+                fillFeedback.textContent = "Perfect! All answers are correct!";
+                fillFeedback.className = 'feedback correct';
+            } else {
+                fillFeedback.textContent = `You got ${correctCount} out of ${totalBlanks} correct. Try again!`;
+                fillFeedback.className = 'feedback incorrect';
+            }
+        }
+
+        // Initialize listen exercise
+        function initListenExercise() {
+            listenOptions.innerHTML = '';
+            listenFeedback.textContent = '';
+            listenFeedback.className = 'feedback';
+            
+            // Select a random word
+            currentListenWordIndex = Math.floor(Math.random() * wordsData.length);
+            const currentWord = wordsData[currentListenWordIndex];
+            
+            // Create audio source (using text-to-speech API via browser)
+            // Note: In a real implementation, you would have pre-recorded audio files
+            wordAudio.innerHTML = `<source src="" type="audio/mpeg">`;
+            
+            // Create options (1 correct, 2 incorrect)
+            const options = [currentWord.english];
+            while (options.length < 3) {
+                const randomWord = wordsData[Math.floor(Math.random() * wordsData.length)].english;
+                if (!options.includes(randomWord)) {
+                    options.push(randomWord);
+                }
+            }
+            
+            // Shuffle options
+            options.sort(() => Math.random() - 0.5);
+            
+            // Create option buttons
+            options.forEach(option => {
+                const optionBtn = document.createElement('button');
+                optionBtn.className = 'option-btn';
+                optionBtn.textContent = `${option} ${wordsData.find(w => w.english === option)?.emoji || ''}`;
+                optionBtn.addEventListener('click', () => checkListenAnswer(option === currentWord.english));
+                listenOptions.appendChild(optionBtn);
+            });
+            
+            // Set up speak button
+            speakWordBtn.onclick = () => {
+                speakWord(currentWord.english);
+            };
+        }
+
+        // Check listen answer
+        function checkListenAnswer(isCorrect) {
+            const currentWord = wordsData[currentListenWordIndex];
+            
+            if (isCorrect) {
+                listenFeedback.textContent = `Correct! "${currentWord.english}" means "${currentWord.arabic}"`;
+                listenFeedback.className = 'feedback correct';
+            } else {
+                listenFeedback.textContent = `Try again! The correct word is "${currentWord.english}"`;
+                listenFeedback.className = 'feedback incorrect';
+            }
+        }
+
+        // Speak a word using browser's speech synthesis
+        function speakWord(word) {
+            if ('speechSynthesis' in window) {
+                const utterance = new SpeechSynthesisUtterance(word);
+                utterance.lang = 'en-US';
+                utterance.rate = 0.8; // Slower for learners
+                speechSynthesis.speak(utterance);
+            } else {
+                listenFeedback.textContent = "Speech synthesis not supported in your browser";
+                listenFeedback.className = 'feedback incorrect';
+            }
+        }
+
+        // Set up event listeners for exercises
+        checkFillBtn.addEventListener('click', checkFillAnswers);
+        newFillBtn.addEventListener('click', initFillExercise);
+        nextWordBtn.addEventListener('click', initListenExercise);
+
+        // Initialize the page when loaded
+        window.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
